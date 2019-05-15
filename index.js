@@ -14,7 +14,7 @@ class ThemeModule extends NotoresModule {
 
     init(){
         const Locals = require('@notores/core').Locals;
-
+        Locals.addResponseType('html');
         Locals.extend({
             addJS(script, path = true) {
                 this.js.push({path, script});
