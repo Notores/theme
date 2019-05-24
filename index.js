@@ -14,6 +14,11 @@ class ThemeModule extends NotoresModule {
 
     init(){
         const Locals = require('@notores/core').Locals;
+        const {middlewareForRouter} = require('@notores/core');
+        const {serveStatic} = require('./lib/middleware');
+
+        middlewareForRouter(serveStatic(true), {level: 'private'});
+
         Locals.addResponseType('html');
         Locals.extend({
             addJS(script, path = true) {
