@@ -21,9 +21,12 @@ class ThemeModule extends NotoresModule {
         middlewareForRouter(serveStatic(true), {level: 'private'});
 
         Locals.addResponseType('html');
+
+        Locals.addProperty('js',[]);
+        Locals.addProperty('css',[]);
+        Locals.addProperty('page', '');
+
         Locals.extend({
-            js: [],
-            css: [],
             addJS(script, path = true) {
                 this.js.push({path, script});
             },
