@@ -1,29 +1,32 @@
 const {NotoresModule} = require('@notores/core');
+
 class ThemeModule extends NotoresModule {
 
     #responder;
 
-    get themeResponder(){
+    get themeResponder() {
         return this.#responder;
     }
 
-    constructor(){
+    constructor() {
         super();
         this.#responder = require('./lib/themeResponseHandler').themeResponder;
     }
 
-    init(){
+    init() {
         const Locals = require('@notores/core').Locals;
         const {middlewareForRouter} = require('@notores/core');
-        const {serveStatic} = require('./lib/middleware');
+        const {serveStatic, checkAdminPath} = require('./lib/middleware');
+
+        middlewareForRouter(checkAdminPath, {level: 'private'});
 
         middlewareForRouter(serveStatic(false));
         middlewareForRouter(serveStatic(true), {level: 'private'});
 
         Locals.addResponseType('html');
 
-        Locals.addProperty('js',[]);
-        Locals.addProperty('css',[]);
+        Locals.addProperty('js', []);
+        Locals.addProperty('css', []);
         Locals.addProperty('page', '');
 
         Locals.extend({
