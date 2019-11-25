@@ -1,6 +1,11 @@
 {
   "name": "@notores/theme",
-  "main": "index.js",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "jest ./",
+    "test-ci": "node ./node_modules/jest/bin/jest.js --ci --env=node --coverage --testResultsProcessor=jest-teamcity-reporter"
+  },
   "authors": [
     "Renzo Roso <renzo@geex.company>",
     "Kevin Sijbers <k.sijbers@gmail.com>"
@@ -13,5 +18,10 @@
     "ejs": "^2.6.1",
     "express-ejs-extend": "^0.0.1",
     "handlebars": "^4.1.2"
+  },
+  "devDependencies": {
+    "@notores/core": "github:notores/core",
+    "@types/ejs": "^2.6.3",
+    "@types/node": "^12.12.13"
   }
 }
