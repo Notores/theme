@@ -1,14 +1,14 @@
 {
   "name": "@notores/theme",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
     "build": "tsc -p .",
     "test": "jest ./",
     "test-ci": "node ./node_modules/jest/bin/jest.js --ci --env=node --coverage --testResultsProcessor=jest-teamcity-reporter"
   },
   "authors": [
-    "Renzo Roso <renzo@geex.company>",
-    "Kevin Sijbers <k.sijbers@gmail.com>"
+    "Renzo Roso <renzo@3tdev.nl>",
+    "Kevin Sijbers <kevin@3tdev.nl>"
   ],
   "version": "1.0.0",
   "peerDependencies": {
