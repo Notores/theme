@@ -1,5 +1,6 @@
-import {NotoresModule, addConfigDefault} from '@notores/core';
+import {addConfigDefault, Locals, middlewareForRouter, NotoresModule} from '@notores/core';
 import {Tag} from "./types";
+import {MiddlewareForRouterLevelEnum} from "@notores/core/Types";
 
 class ThemeModule extends NotoresModule {
 
@@ -15,14 +16,12 @@ class ThemeModule extends NotoresModule {
     }
 
     init() {
-        const Locals = require('@notores/core').Locals;
-        const {middlewareForRouter} = require('@notores/core');
         const {serveStatic, checkAdminPath} = require('./lib/middleware');
 
-        middlewareForRouter(checkAdminPath, {level: 'private'});
+        middlewareForRouter(checkAdminPath, {level: MiddlewareForRouterLevelEnum.private});
 
         middlewareForRouter(serveStatic(false));
-        middlewareForRouter(serveStatic(true), {level: 'private'});
+        middlewareForRouter(serveStatic(true), {level: MiddlewareForRouterLevelEnum.private});
 
         Locals.addResponseType('html');
 
@@ -58,7 +57,7 @@ class ThemeModule extends NotoresModule {
     }
 }
 
-export default new ThemeModule();
+module.exports = new ThemeModule();
 
 addConfigDefault({
     key: 'theme',

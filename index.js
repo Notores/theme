@@ -10,17 +10,15 @@ class ThemeModule extends core_1.NotoresModule {
         return this._responder;
     }
     init() {
-        const Locals = require('@notores/core').Locals;
-        const { middlewareForRouter } = require('@notores/core');
         const { serveStatic, checkAdminPath } = require('./lib/middleware');
-        middlewareForRouter(checkAdminPath, { level: 'private' });
-        middlewareForRouter(serveStatic(false));
-        middlewareForRouter(serveStatic(true), { level: 'private' });
-        Locals.addResponseType('html');
-        Locals.addProperty('js', []);
-        Locals.addProperty('css', []);
-        Locals.addProperty('page', '');
-        Locals.extend({
+        core_1.middlewareForRouter(checkAdminPath, { level: "private" /* private */ });
+        core_1.middlewareForRouter(serveStatic(false));
+        core_1.middlewareForRouter(serveStatic(true), { level: "private" /* private */ });
+        core_1.Locals.addResponseType('html');
+        core_1.Locals.addProperty('js', []);
+        core_1.Locals.addProperty('css', []);
+        core_1.Locals.addProperty('page', '');
+        core_1.Locals.extend({
             addJS(script, path = true) {
                 this.js.push({ path, script });
             },
@@ -42,7 +40,7 @@ class ThemeModule extends core_1.NotoresModule {
         });
     }
 }
-exports.default = new ThemeModule();
+module.exports = new ThemeModule();
 core_1.addConfigDefault({
     key: 'theme',
     value: {
