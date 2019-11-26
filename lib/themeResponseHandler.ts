@@ -8,7 +8,7 @@ import handlebars from 'handlebars';
 import {ThemeConfig} from "../types";
 import {constants, promises} from "fs";
 import access = promises.access;
-import renderFile from 'express-ejs-extend';
+const renderFile = require('express-ejs-extend');
 
 const logger = log(module);
 
