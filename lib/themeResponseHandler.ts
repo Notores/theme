@@ -4,11 +4,11 @@ import {join} from "path";
 import {Request, Response} from 'express';
 import {getThemePath} from "./config";
 import {render} from 'ejs';
-import * as renderFile from 'express-ejs-extend';
 import handlebars from 'handlebars';
 import {ThemeConfig} from "../types";
 import {constants, promises} from "fs";
 import access = promises.access;
+import renderFile from 'express-ejs-extend';
 
 const logger = log(module);
 
